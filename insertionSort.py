@@ -1,26 +1,27 @@
-arr = [19,16,3,14,6,8,20,15,1,24,17,25,4,21,5,18,9,10,2,11,22,7,12,23,13,]
+import time
 
-c1,c2=0,0
-for i in range(1,len(arr)):
-    val = arr[i]
-    pos = i
-    c1+=1
-    while pos > 0 and val < arr[pos-1]:
-        arr[pos] = arr[pos-1]
-        c1+=1
-        pos-=1
-
-    arr[pos] =val
+def insertionsort(data,drawData):
+    for i in range(1,len(data)):
+        val = data[i]
+        pos = i
+        drawData(data, ["green" if t == pos or t==pos -1 else "yellow" for t in range(len(data))])
+        time.sleep(0.1)
+        temp = True
 
 
+        while pos > 0 and val < data[pos-1]:
+            if temp == False:
+                drawData(data, ["green" if t == pos or t==pos -1 else "yellow" for t in range(len(data))])
+                time.sleep(0.1)
+            temp = False
+            data[pos],data[pos-1] = data[pos-1],data[pos]
 
-print(arr,c1 )
-data = [19,16,3,14,6,8,20,15,1,24,17,25,4,21,5,18,9,10,2,11,22,7,12,23,13,]
-for x in range(len(data)):
-    for i in range(len(data)-1-x):
-        if data[i] > data[i+1]:
-            data[i], data[i+1] = data[i+1],data[i]
-        c2+=1
+            drawData(data, ["light green" if t== pos or t== pos-1 else "yellow" for t in range(len(data))])
+            time.sleep(0.1)
 
+            pos-=1
 
-print(data, c2)
+        if pos > 0:
+            drawData(data, ["green" if t == pos or t==pos -1 else "yellow" for t in range(len(data))])
+            time.sleep(0.1)
+    drawData(data, ["light green"  for t in range(len(data))])
