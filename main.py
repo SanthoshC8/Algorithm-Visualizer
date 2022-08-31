@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from bubbleSort import bubblesort
 from insertionSort import insertionsort
+from selectionSort import selectionsort
 
 
 
@@ -18,7 +19,15 @@ temp.place(x=1, y=20)
 
 selected_algorithm = StringVar()
 algo = ttk.Combobox(window, width = 20, textvariable = selected_algorithm
-,values= ["Bubble Sort", "Insertion Sort"], state = "readonly")
+    , values= ["Bubble Sort", "Selection Sort","Insertion Sort"]
+    , state = "readonly")
+
+
+
+
+
+
+
 algo.place(x=1,y=40)
 algo.current(0)
 
@@ -27,6 +36,8 @@ def StartAlgorithm():
 
     if selected_algorithm.get() == "Bubble Sort":
         bubblesort(data,drawData)
+    elif selected_algorithm.get() == "Selection Sort":
+        selectionsort(data,drawData)
     elif selected_algorithm.get() == "Insertion Sort":
         insertionsort(data,drawData)
 
