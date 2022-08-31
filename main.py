@@ -1,23 +1,44 @@
 from tkinter import *
 from bubbleSort import bubblesort
 
+
+
 window = Tk()
 window.title("Algorithm Visualizer")
 window.geometry("700x500")
+data = []
+
+
 greeting = Label(text="Algorithm Visualizer")
 greeting.pack()
 temp = Label(text="Algorithm:")
 temp.place(x=1, y=20)
 
+
+def StartAlgorithm():
+    global data
+    bubblesort(data,drawData)
+
+
+
+def drawData(data, colourArray):
+    canvas.delete("all")
+    norm_data = [i/max(data) for i in data]
+    for i, h in enumerate(norm_data):
+
+        x0 = i* ( 700/(len(data)) )+1
+        y0= 360 -h *350
+        x1 = (i+1)*( 700/(len(data)) )
+        y1 = 350 + 20
+
+        canvas.create_rectangle(x0,y0,x1,y1,fil=colourArray[i])
+        canvas.create_text(x0+8,y0+5,text=str(data[i]),fill="dark red")
+
+    window.update()
 def Generate():
-    arr= [19,16,3,14,6,8,20,15,1,24,17,25,4,21,5,18,9,10,2,11,22,7,12,23,13,]
-
-    star_x = 0
-    for i in arr:
-        canvas.create_rectangle(star_x,350-i*14+10, star_x+28,355,fil="yellow")
-        canvas.create_text(star_x+9,350-i*14+16,text=str(i),fill="dark red")
-        star_x+=28
-
+    global data
+    data = [19,16,3,14,6,8,20,15,1,24,17,25,4,21,5,18,9,10,2,11,22,7,12,23,13,]
+    drawData(data, ["yellow" for x in range(len(data))])
 
 button = Button(
     text = "Randomize",
@@ -27,7 +48,7 @@ button.place(x= 620, y= 20)
 
 button2 = Button(
     text = "Sort",
-    command = bubblesort
+    command = StartAlgorithm
 )
 button2.place(x=620,y= 40)
 

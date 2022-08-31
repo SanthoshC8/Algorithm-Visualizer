@@ -1,10 +1,14 @@
-def bubblesort(arr):
-    arr= [19,16,3,14,6,8,20,15,1,24,17,25,4,21,5,18,9,10,2,11,22,7,12,23,13,]
+import time
+def bubblesort(data,drawData):
 
-    for x in range(len(arr)):
-        for i in range(len(arr)-1):
-            if arr[i] > arr[i+1]:
-                arr[i], arr[i+1] = arr[i+1],arr[i]
 
-    print(arr)
-    return arr
+    for x in range(len(data)):
+        for i in range(len(data)-1-x):
+            if data[i] > data[i+1]:
+                data[i], data[i+1] = data[i+1],data[i]
+
+
+                drawData(data, ["light green" if t == i or t==i +1 else "yellow" for t in range(len(data))])
+                time.sleep(0.1)
+
+    drawData(data,["light green" for i in range(len(data))])
