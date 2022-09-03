@@ -3,6 +3,7 @@ from tkinter import ttk
 from bubbleSort import bubblesort
 from insertionSort import insertionsort
 from selectionSort import selectionsort
+from quickSort import quicksort
 
 
 
@@ -19,7 +20,7 @@ temp.place(x=1, y=20)
 
 selected_algorithm = StringVar()
 algo = ttk.Combobox(window, width = 20, textvariable = selected_algorithm
-    , values= ["Bubble Sort", "Selection Sort","Insertion Sort"]
+    , values= ["Bubble Sort", "Selection Sort","Insertion Sort","Quick Sort"]
     , state = "readonly")
 
 
@@ -40,6 +41,8 @@ def StartAlgorithm():
         selectionsort(data,drawData)
     elif selected_algorithm.get() == "Insertion Sort":
         insertionsort(data,drawData)
+    elif selected_algorithm.get() == "Quick Sort":
+        quicksort(data,drawData)
 
 
 
@@ -59,7 +62,7 @@ def drawData(data, colourArray):
     window.update()
 def Generate():
     global data
-    data = [19,16,3,14,6,8,20,15,1,24,17,25,4,21,5,18,9,10,2,11,22,7,12,23,13,]
+    data = [19,16,3,14,6,8,20,15,1,24,17,25,4,21,5,18,9,10,2,11,22,7,12,23,13]
     drawData(data, ["yellow" for x in range(len(data))])
 
 button = Button(
