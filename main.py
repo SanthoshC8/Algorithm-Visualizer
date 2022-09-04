@@ -4,7 +4,7 @@ from bubbleSort import bubblesort
 from insertionSort import insertionsort
 from selectionSort import selectionsort
 from quickSort import quicksort
-
+from mergeSort import mergesort
 
 
 window = Tk()
@@ -20,7 +20,7 @@ temp.place(x=1, y=20)
 
 selected_algorithm = StringVar()
 algo = ttk.Combobox(window, width = 20, textvariable = selected_algorithm
-    , values= ["Bubble Sort", "Selection Sort","Insertion Sort","Quick Sort"]
+    , values= ["Bubble Sort", "Selection Sort","Insertion Sort","Merge Sort","Quick Sort"]
     , state = "readonly")
 
 
@@ -35,13 +35,15 @@ algo.current(0)
 def StartAlgorithm():
     global data
 
-    if selected_algorithm.get() == "Bubble Sort":
+    if selected_algorithm.get() == "Bubble Sort": #49s
         bubblesort(data,drawData)
-    elif selected_algorithm.get() == "Selection Sort":
+    elif selected_algorithm.get() == "Selection Sort": #36s
         selectionsort(data,drawData)
-    elif selected_algorithm.get() == "Insertion Sort":
+    elif selected_algorithm.get() == "Insertion Sort": #34s
         insertionsort(data,drawData)
-    elif selected_algorithm.get() == "Quick Sort":
+    elif selected_algorithm.get() == "Merge Sort": #33s
+        mergesort(data,drawData)
+    elif selected_algorithm.get() == "Quick Sort": #19s
         quicksort(data,drawData)
 
 
