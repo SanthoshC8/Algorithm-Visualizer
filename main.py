@@ -14,23 +14,29 @@ data = []
 
 
 greeting = Label(text="Algorithm Visualizer")
+greeting.config(font =("Courier", 30))
 greeting.pack()
-temp = Label(text="Algorithm:")
-temp.place(x=1, y=20)
+temp = Label(text="Algorithm:",font =("Courier", 15))
+temp.place(x=1, y=62)
 
 selected_algorithm = StringVar()
-algo = ttk.Combobox(window, width = 20, textvariable = selected_algorithm
+algo = ttk.Combobox(window, font =("Courier"),width = 20, textvariable = selected_algorithm
     , values= ["Bubble Sort", "Selection Sort","Insertion Sort","Merge Sort","Quick Sort"]
-    , state = "readonly")
+    )
 
 
-
-
-
-
-
-algo.place(x=1,y=40)
+algo.place(x=1,y=92)
 algo.current(0)
+
+
+w1 = Scale(window, from_=0, to=42,orient=HORIZONTAL,label="Range:",font =("Courier", 15))
+w1.place(x=200,y= 60)
+
+
+w1 = Scale(window, from_=0, to=42,orient=HORIZONTAL,label="Speed:",font =("Courier", 15))
+w1.place(x=314,y= 60)
+
+
 
 def StartAlgorithm():
     global data
@@ -67,23 +73,39 @@ def Generate():
     data = [19,16,3,14,6,8,20,15,1,24,17,25,4,21,5,18,9,10,2,11,22,7,12,23,13]
     drawData(data, ["yellow" for x in range(len(data))])
 
+
 button = Button(
     text = "Randomize",
-    command = Generate
+    command = Generate,
+    font =("Courier", 15),
+    height = 2,
+    width = 16,
+    highlightbackground="Yellow",
+    fg="Black",
+    #highlightthickness=21
 )
-button.place(x= 620, y= 20)
+button.place(x= 550, y= 80)
 
 button2 = Button(
     text = "Sort",
-    command = StartAlgorithm
+    command = StartAlgorithm,
+    font =("Courier", 15),
+    height = 2,
+    width = 16,
+    highlightbackground="Yellow",
+    fg="Black",
+
 )
-button2.place(x=620,y= 40)
+button2.place(x=550,y= 40)
+
+
+
 
 
 
 canvas= Canvas(master=window,bg= "black", width = 700, height = 355)
 
-canvas.place(y = 70, x= 0)
+canvas.place(y = 115, x= 0)
 
 
 
